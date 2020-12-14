@@ -1,0 +1,46 @@
+server:
+  port: 8080
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+     defaultZone: http://123:123@127.0.0.1:8080/eureka/
+     # default-zone: http://localhost:8080/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1 
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ghost_killer?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  security:
+    user:
+      name: admin
+      password: admin
+    
+    #配置连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+  jpa:
+    database: MYSQL
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  activemq:
+    user: admin
+    password: admin
+    
+    #是否只使用一个MessageProducer
+    pool:
+      use-anonymous-producers: true
